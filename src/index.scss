@@ -6,15 +6,12 @@ body {
   margin: 0;
 }
 
-.video {
+video {
   position: fixed;
   top: 50%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  video {
-    width: 100%;
-  }
 }
 
 .scroll-spacer {

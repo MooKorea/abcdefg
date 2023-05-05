@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useSpring, useMotionValueEvent } from "framer-motion";
+import { useScroll, useSpring, useMotionValueEvent } from "framer-motion";
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -22,11 +22,9 @@ function App() {
   return (
     <>
       <div className="scroll-spacer"></div>
-      <motion.div className="video">
-        <video ref={video}>
-          <source src="/0001-1592.mp4" type="video/mp4" />
-        </video>
-      </motion.div>
+      <video ref={video}>
+        <source src="/0001-1592.mp4" type="video/mp4" />
+      </video>
     </>
   );
 }

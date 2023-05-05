@@ -3,14 +3,14 @@ import { useScroll, useMotionValueEvent } from "framer-motion";
 
 function App() {
   const { scrollYProgress } = useScroll();
-  
+
   const video = useRef();
+  const videoDuration = 26.5333;
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    let setStoreScrollPos = latest * 26.5333
-    if (video.current != undefined) {
-      video.current.currentTime = setStoreScrollPos
-    }
-  })
+    if (video.current === undefined) return;
+    video.current.currentTime = latest * videoDuration;
+  });
 
   return (
     <>

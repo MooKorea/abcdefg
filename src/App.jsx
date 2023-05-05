@@ -1,23 +1,16 @@
 import { useRef } from "react";
-import { useScroll, useSpring, useMotionValueEvent } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 
 function App() {
   const { scrollYProgress } = useScroll();
   
-  const scrub = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 60,
-    restDelta: 0.001,
-  });
-  
   const video = useRef();
-  useMotionValueEvent(scrub, "change", (latest) => {
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
     let setStoreScrollPos = latest * 26.5333
     if (video.current != undefined) {
       video.current.currentTime = setStoreScrollPos
     }
   })
-
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useSpring, useMotionValueEvent } from "framer-motion";
 
 function App() {
@@ -10,17 +10,14 @@ function App() {
     restDelta: 0.001,
   });
   
-  const [storeScrollPos, setStoreScrollPos] = useState();
+  const video = useRef();
   useMotionValueEvent(scrub, "change", (latest) => {
-    setStoreScrollPos(latest * 26.5333)
+    let setStoreScrollPos = latest * 26.5333
+    if (video.current != undefined) {
+      video.current.currentTime = setStoreScrollPos
+    }
   })
 
-  const video = useRef();
-  useEffect(() => {
-    if (storeScrollPos != undefined) {
-      video.current.currentTime = storeScrollPos
-    }
-  }, [storeScrollPos]);
 
   return (
     <>

@@ -18,6 +18,6 @@ jobs:
               owner: 'MooKorea',
               repo: 'mookorea.github.io',
               workflow_id: 'deploy.yml',
-              ref: 'master'
+              ref: 'main'
             })
             console.log(result)

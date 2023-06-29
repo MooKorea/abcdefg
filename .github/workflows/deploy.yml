@@ -9,6 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Send build hook
-        run: |
-        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/MooKorea/mookorea.github.io/dispatches --data '{"event_type": "build_application"}'
+      - name: Test
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const result = await github.rest.actions.createWorkflowDispatch({
+              owner: 'MooKorea',
+              repo: 'mookorea.github.io',
+              workflow_id: 'deploy.yml',
+              ref: 'master'
+            })
+            console.log(result)

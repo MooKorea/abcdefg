@@ -9,7 +9,6 @@ jobs:
   build:
     name: Test Auto Deploy On Main Repo
     runs-on: ubuntu-latest
-
     steps:
       - name: POST request
         run: |
